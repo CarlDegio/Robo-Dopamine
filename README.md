@@ -219,7 +219,7 @@ python -m eval.evaluation_api \
 ## ⚡ Fine-Tuning
 ### Step 1. Reconstruct Your Own Dataset
 
-***Raw Data Directory Structure***: The `dataset/example_raw_data` directory serves as **an EXAMPLE** to demonstrate the required structure for your own raw data, ensuring compatibility with our provided data processing scripts.
+***Raw Data Directory Structure***: The [`dataset/example_raw_data`](https://github.com/FlagOpen/Robo-Dopamine/tree/main/dataset/example_raw_data) directory serves as **an EXAMPLE** to demonstrate the required structure for your own raw data, ensuring compatibility with our provided data processing scripts.
 ```
 example_raw_data/
 ├── episode_001/
@@ -248,7 +248,7 @@ example_raw_data/
 
 ### Step 2. Process Your Own Dataset 
 
-Here, we use `dataset/example_raw_data` as an example.
+Here, we use [`dataset/example_raw_data`](https://github.com/FlagOpen/Robo-Dopamine/tree/main/dataset/example_raw_data) as an example.
 
 ```bash
 cd dataset
