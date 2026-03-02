@@ -25,6 +25,7 @@
 
 
 ## 🗞️ News
+- **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
 - **`2026-02-22`**: 🔥🔥🔥 **Robo-Dopamine** gets accepted to CVPR 2026! See you in Denver, Colorado, USA!
 - **`2026-02-10`**: ⚡  We released data generation pipeline and finetune codes. ***Try to finetune with your own data***.
 - **`2026-01-26`**: 🔍 We released [Robo-Dopamine-Bench](https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-Bench) benchmark and evaluation codes.
@@ -37,10 +38,10 @@
 - [x] Release Robo-Dopamine-GRM-3B model and inference codes.
 - [x] Release Robo-Dopamine-Bench benchmark and evaluation codes.
 - [x] Release data generation pipeline and finetune codes.
-- [ ] Release Robo-Dopamine-GRM-8B model *(About 2 week)*.
-- [ ] Release Robo-Dopamine-GRM-8B-Pro model *(About 3 week)*.
+- [x] Release Robo-Dopamine-GRM-8B model.
+- [ ] Release Robo-Dopamine-GRM-8B-Pro model *(About 2 week)*.
 - [ ] Release full GRM dataset and GRM pre-training codes *(About 1 months)*.
-- [ ] Release Dopamine-RL training codes for simulator and real-world settings *(Maybe 2 months or more)*.
+- [ ] Release Dopamine-RL training codes for simulator and real-world settings *(Maybe 1 months or more)*.
 
 
 ## 🤖 Overview
@@ -63,8 +64,8 @@ This approach is universally compatible with a wide range of RL algorithms.
 | Models                   | Checkpoint                                                     | Description                                           | 
 |--------------------------|----------------------------------------------------------------|-------------------------------------------------------|
 | GRM-3B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B)   | Full-trained GRM from RoboBrain-2.0-3B      | 
-| GRM-8B     | 🤗 ***Coming soon ...***  | Full-trained GRM from RoboBrain-2.0-8B      |
-| GRM-8B-Pro | 🤗 ***Coming soon ...***  | Full-trained GRM from RoboBrain-2.5-8B      |
+| GRM-8B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B)   | Full-trained GRM from RoboBrain-2.0-8B      |
+| GRM-8B-Pro | 🤗 ***Coming soon ...***  | More Powerful GRM with both Temporal and Spatial Perception Modeling     |
 
 ## 🛠️ Setup
 
@@ -87,6 +88,7 @@ import os
 from examples.inference import GRMInference
 
 model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
+# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
 
 TASK_INSTRUCTION = "organize the table"
 BASE_DEMO_PATH = "./examples/demo_table"
@@ -120,6 +122,7 @@ import os
 from examples.inference import GRMInference
 
 model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
+# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
 
 TASK_INSTRUCTION = "organize the table"
 BASE_DEMO_PATH = "./examples/demo_table"
@@ -153,6 +156,7 @@ import os
 from examples.inference import GRMInference
 
 model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
+# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
 
 TASK_INSTRUCTION = "organize the table"
 BASE_DEMO_PATH = "./examples/demo_table"
@@ -195,12 +199,22 @@ cd ..
 
 ### 1. Evaluate local GRM with vLLM.
 ```bash
+# GRM-3B
 export CUDA_VISIBLE_DEVICES=0 
 python -m eval.evaluation_grm \
   --model_path tanhuajie2001/Robo-Dopamine-GRM-3B \
   --input_json_dir ./Robo-Dopamine-Bench/jsons \
   --base_dir ./Robo-Dopamine-Bench/images \
   --out_root_dir ./eval_results/results_Robo-Dopamine-GRM-3B \
+  --batch_size 16
+
+# GRM-8B
+export CUDA_VISIBLE_DEVICES=0 
+python -m eval.evaluation_grm \
+  --model_path tanhuajie2001/Robo-Dopamine-GRM-8B \
+  --input_json_dir ./Robo-Dopamine-Bench/jsons \
+  --base_dir ./Robo-Dopamine-Bench/images \
+  --out_root_dir ./eval_results/results_Robo-Dopamine-GRM-8B \
   --batch_size 16
 ```
 
