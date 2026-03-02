@@ -230,6 +230,12 @@ python -m eval.evaluation_api \
   --max_workers 16
 ```
 
+***RESULTS***
+<div align="center"> 
+    <img src="assets/eval.png" alt="Logo" style="width=75%;vertical-align:middle">
+</div>
+
+
 ## ⚡ Fine-Tuning
 ### Step 1. Reconstruct Your Own Dataset
 
