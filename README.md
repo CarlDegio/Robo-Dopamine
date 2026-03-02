@@ -26,11 +26,11 @@
 
 ## 🗞️ News
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
-- **`2026-02-22`**: 🔥🔥🔥 **Robo-Dopamine** gets accepted to CVPR 2026! See you in Denver, Colorado, USA!
+- **`2026-02-22`**: 🔥🔥🔥 ***Robo-Dopamine*** gets accepted to **CVPR 2026**! See you in Denver, Colorado, USA!
 - **`2026-02-10`**: ⚡  We released data generation pipeline and finetune codes. ***Try to finetune with your own data***.
 - **`2026-01-26`**: 🔍 We released [Robo-Dopamine-Bench](https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-Bench) benchmark and evaluation codes.
 - **`2026-01-08`**: 🤗 We released [Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B) model and inference codes.
-- **`2025-12-30`**: ✨ ***Codes, Dataset and Weights are coming soon! Stay tuned for updates***.
+- **`2025-12-30`**: ✨ Codes, Dataset and Weights are coming soon! Stay tuned for updates.
 - **`2025-12-30`**: 🔥 We released our [Project Page](https://robo-dopamine.github.io/) of **Robo-Dopamine**.
 
 
