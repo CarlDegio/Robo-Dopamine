@@ -65,7 +65,7 @@ This approach is universally compatible with a wide range of RL algorithms.
 |--------------------------|----------------------------------------------------------------|-------------------------------------------------------|
 | GRM-3B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B)   | Full-trained GRM from RoboBrain-2.0-3B      | 
 | GRM-8B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B)   | Full-trained GRM from RoboBrain-2.0-8B      |
-| GRM-8B-Pro | 🤗 ***Coming soon ...***  | More Powerful GRM with both Temporal and Spatial Perception Modeling     |
+| GRM-8B-Pro | 🤗 *Coming soon ...*  | *More Powerful GRM with ST Modeling*     |
 
 ## 🛠️ Setup
 
