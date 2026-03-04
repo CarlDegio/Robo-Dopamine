@@ -636,73 +636,42 @@ class GRMInference:
 
 if __name__ == "__main__":
     
-    MODEL_PATH = "../checkpoints/Robo-Dopamine-GRM-3B"
+    model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview")
+
     TASK_INSTRUCTION = "organize the table"
-    BASE_DEMO_PATH = "./demo_table"
-    GOAL_IMAGE_PATH = None # "./demo_table/goal_image.png" 
-    OUTPUT_ROOT = "../results"
-    
-    agent = GRMInference(
-        model_path=MODEL_PATH,
-        max_image_num=8
-    )
+    BASE_DEMO_PATH = "./examples/demo_table"
+    OUTPUT_ROOT = "./results"
+    ## Note: If no target/goal image is provided, 
+    ## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/demo_table/blank_goal.png".
+    GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/demo_table/blank_goal.png"
+    PREDICTION_MODE = "forward" # "incremental" or "backward"
 
-    print("## =====================================")
-    print("## (1) Example for Incremental-Mode")
-    print("## =====================================")
-    mode = "incremental" # "incremental", "forward", "backward"
-
-    output_dir = agent.run_pipeline(
+    # multi-view usage:
+    output_dir = model.run_pipeline(
         cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
         cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
         cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
         out_root       = OUTPUT_ROOT,
         task           = TASK_INSTRUCTION,
-        frame_interval = 30,
-        batch_size     = 10,
+        frame_interval = 10, # modify frame_interval as desired, but it shouldn't be set too small if using 'incremental'.
+        batch_size     = 1, # please increase batch_size > 1, if you have enough GPU memory.
         goal_image     = GOAL_IMAGE_PATH,
-        eval_mode      = mode,
+        eval_mode      = PREDICTION_MODE,
         visualize      = True
     )
-    
-    print(f"Episode ({BASE_DEMO_PATH}) processed ({mode}). Output at: {output_dir}")
+    print(f"Episode ({BASE_DEMO_PATH}) processed with multi-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
 
-    print("## =====================================")
-    print("## (2) Example for Forward-Mode")
-    print("## =====================================")
-    mode = "forward" # "incremental", "forward", "backward"
-
-    output_dir = agent.run_pipeline(
+    # single-view usage:
+    output_dir = model.run_pipeline(
         cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
-        cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
-        cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
+        cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"), # repeat cam_high
+        cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"), # repeat cam_high
         out_root       = OUTPUT_ROOT,
         task           = TASK_INSTRUCTION,
-        frame_interval = 30,
-        batch_size     = 10,
+        frame_interval = 10, # modify frame_interval as desired, but it shouldn't be set too small if using 'incremental'.
+        batch_size     = 1, # please increase batch_size > 1, if you have enough GPU memory.
         goal_image     = GOAL_IMAGE_PATH,
-        eval_mode      = mode,
+        eval_mode      = PREDICTION_MODE,
         visualize      = True
     )
-    
-    print(f"Episode ({BASE_DEMO_PATH}) processed ({mode}). Output at: {output_dir}")
-
-    print("## =====================================")
-    print("## (3) Example for Backward-Mode")
-    print("## =====================================")
-    mode = "backward" # "incremental", "forward", "backward"
-
-    output_dir = agent.run_pipeline(
-        cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
-        cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
-        cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
-        out_root       = OUTPUT_ROOT,
-        task           = TASK_INSTRUCTION,
-        frame_interval = 30,
-        batch_size     = 10,
-        goal_image     = GOAL_IMAGE_PATH,
-        eval_mode      = mode,
-        visualize      = True
-    )
-    
-    print(f"Episode ({BASE_DEMO_PATH}) processed ({mode}). Output at: {output_dir}")
+    print(f"Episode ({BASE_DEMO_PATH}) processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")

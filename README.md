@@ -25,6 +25,7 @@
 
 
 ## 🗞️ News
+- **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**.
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
 - **`2026-02-22`**: 🔥🔥🔥 **Robo-Dopamine** gets accepted to **CVPR 2026**! See you in Denver, Colorado, USA!
 - **`2026-02-10`**: ⚡  We released data generation pipeline and finetune codes. ***Try to finetune with your own data***.
@@ -39,7 +40,8 @@
 - [x] Release Robo-Dopamine-Bench benchmark and evaluation codes.
 - [x] Release data generation pipeline and finetune codes.
 - [x] Release Robo-Dopamine-GRM-8B model.
-- [ ] Release Robo-Dopamine-GRM-8B-Pro model *(About 2 week)*.
+- [x] Release more powerful and stable Robo-Dopamine-GRM-2.0-8B-Preview model.
+- [ ] Release final version of Robo-Dopamine-GRM-2.0-8B model *(About 2 week)*.
 - [ ] Release full GRM dataset and GRM pre-training codes *(About 1 months)*.
 - [ ] Release Dopamine-RL training codes for simulator and real-world settings *(Maybe 1 months or more)*.
 
@@ -65,7 +67,7 @@ This approach is universally compatible with a wide range of RL algorithms.
 |--------------------------|----------------------------------------------------------------|-------------------------------------------------------|
 | GRM-3B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B)   | Full-trained GRM from RoboBrain-2.0-3B      | 
 | GRM-8B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B)   | Full-trained GRM from RoboBrain-2.0-8B      |
-| GRM-8B-Pro | 🤗 *Coming soon ...*  | *More Powerful GRM with ST Modeling*     |
+| GRM-2.0-8B-Prewiew | [🤗 tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) | *More Powerful and Stable GRM with ST Modeling*     |
 
 ## 🛠️ Setup
 
@@ -84,107 +86,55 @@ pip install -r requirements.txt
 
 The following are simple and practical examples of the three inference modes (Incremental-Mode, Forward-Mode, and Backward-Mode). In practice, to predict the task state reward more accurately, ***we highly recommend averaging the inference reward results from all three modes to use as the final reward***.
 
-### 1. Example for GRM Incremental-Mode
+### 1. Example for GRM Forward-Mode
 ```python
 import os
 from examples.inference import GRMInference
 
-model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
-# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
+model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview")
 
 TASK_INSTRUCTION = "organize the table"
 BASE_DEMO_PATH = "./examples/demo_table"
-GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" 
 OUTPUT_ROOT = "./results"
 
+## Note: If no target/goal image is provided, 
+## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/demo_table/blank_goal.png".
+GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/demo_table/blank_goal.png"
+
+# select prediction model: Forward-Mode, Incremental-Mode or Backward-Mode
+PREDICTION_MODE = "forward" # "incremental" or "backward"
+
+# multi-view usage:
 output_dir = model.run_pipeline(
     cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
     cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
     cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
     out_root       = OUTPUT_ROOT,
     task           = TASK_INSTRUCTION,
-    frame_interval = 30,
-    batch_size     = 1,
+    frame_interval = 10, # modify frame_interval as desired, but it shouldn't be set too small if using 'incremental'.
+    batch_size     = 1, # please increase batch_size > 1, if you have enough GPU memory.
     goal_image     = GOAL_IMAGE_PATH,
-    eval_mode      = "incremental",
+    eval_mode      = PREDICTION_MODE,
     visualize      = True
 )
 
-print(f"Episode ({BASE_DEMO_PATH}) processed with Incremental-Mode. Output at: {output_dir}")
-
-```
-***visualize in reward_vis.mp4***
-<div align="center"> 
-    <img src="assets/example_incremental.png" alt="Logo" style="width=75%;vertical-align:middle">
-</div>
-
-### 2. Example for GRM Forward-Mode
-```python
-import os
-from examples.inference import GRMInference
-
-model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
-# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
-
-TASK_INSTRUCTION = "organize the table"
-BASE_DEMO_PATH = "./examples/demo_table"
-GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" 
-OUTPUT_ROOT = "./results"
-
+# single-view usage:
 output_dir = model.run_pipeline(
     cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
-    cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
-    cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
+    cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"), # repeat cam_high
+    cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"), # repeat cam_high
     out_root       = OUTPUT_ROOT,
     task           = TASK_INSTRUCTION,
-    frame_interval = 30,
-    batch_size     = 1,
+    frame_interval = 10, # modify frame_interval as desired, but it shouldn't be set too small if using 'incremental'.
+    batch_size     = 1, # please increase batch_size > 1, if you have enough GPU memory.
     goal_image     = GOAL_IMAGE_PATH,
-    eval_mode      = "forward",
+    eval_mode      = PREDICTION_MODE,
     visualize      = True
 )
 
-print(f"Episode ({BASE_DEMO_PATH}) processed with Forward-Mode. Output at: {output_dir}")
+print(f"Episode ({BASE_DEMO_PATH}) processed with {PREDICTION_MODE}-mode. Output at: {output_dir}")
 
 ```
-***visualize in reward_vis.mp4***
-<div align="center"> 
-    <img src="assets/example_forward.png" alt="Logo" style="width=75%;vertical-align:middle">
-</div>
-
-### 3. Example for GRM Backward-Mode
-```python
-import os
-from examples.inference import GRMInference
-
-model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-3B")
-# model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-8B")
-
-TASK_INSTRUCTION = "organize the table"
-BASE_DEMO_PATH = "./examples/demo_table"
-GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" 
-OUTPUT_ROOT = "./results"
-
-output_dir = model.run_pipeline(
-    cam_high_path  = os.path.join(BASE_DEMO_PATH, "cam_high.mp4"),
-    cam_left_path  = os.path.join(BASE_DEMO_PATH, "cam_left_wrist.mp4"),
-    cam_right_path = os.path.join(BASE_DEMO_PATH, "cam_right_wrist.mp4"),
-    out_root       = OUTPUT_ROOT,
-    task           = TASK_INSTRUCTION,
-    frame_interval = 30,
-    batch_size     = 1,
-    goal_image     = GOAL_IMAGE_PATH,
-    eval_mode      = "backward",
-    visualize      = True
-)
-
-print(f"Episode ({BASE_DEMO_PATH}) processed with Backward-Mode. Output at: {output_dir}")
-
-```
-***visualize in reward_vis.mp4***
-<div align="center"> 
-    <img src="assets/example_backward.png" alt="Logo" style="width=75%;vertical-align:middle">
-</div>
 
 ## 🔍 Evaluation
 
