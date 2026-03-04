@@ -116,6 +116,7 @@ output_dir = model.run_pipeline(
     eval_mode      = PREDICTION_MODE,
     visualize      = True
 )
+print(f"Episode ({BASE_DEMO_PATH}) processed with multi-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
 
 # single-view usage:
 output_dir = model.run_pipeline(
@@ -130,8 +131,7 @@ output_dir = model.run_pipeline(
     eval_mode      = PREDICTION_MODE,
     visualize      = True
 )
-
-print(f"Episode ({BASE_DEMO_PATH}) processed with {PREDICTION_MODE}-mode. Output at: {output_dir}")
+print(f"Episode ({BASE_DEMO_PATH}) processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
 
 ```
 
