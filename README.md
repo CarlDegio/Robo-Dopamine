@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ## 💡 Simple Inference
 
-The following are simple and practical examples of the three inference modes (Incremental-Mode, Forward-Mode, and Backward-Mode). In practice, to predict the task state reward more accurately, ***we highly recommend averaging the inference reward results from all three modes to use as the final reward***.
+The following are simple and practical examples of the three inference modes (Incremental-Mode, Forward-Mode, and Backward-Mode). In practice, to predict the task state reward more accurately, ***we highly recommend averaging the inference reward results from all three modes to use as the final reward in RL***.
 
 ```python
 import os

@@ -506,7 +506,7 @@ class GRMInference:
         task: str,
         frame_interval: int = 10,
         batch_size: int = 1,
-        goal_image: Optional[str] = None,
+        goal_image: str = None,
         eval_mode: str = "incremental",
         visualize: bool = False
     ) -> str:
@@ -519,9 +519,14 @@ class GRMInference:
         if eval_mode not in valid_modes:
             raise ValueError(f"Invalid eval_mode '{eval_mode}'. Must be one of {valid_modes}")
 
+        assert goal_image is not None, "Goal image path must be provided. If no goal image is available, please use a blank image as a placeholder."
+
         out_root = Path(out_root)
         ts = datetime.now().strftime("%y-%m-%d-%H-%M-%S")
-        run_root = out_root / ts
+        # Sanitize task string for directory name
+        safe_task = re.sub(r'[^A-Za-z0-9_]', '_', task)
+        run_root = out_root / f"{ts}_{eval_mode}_mode_{safe_task}"
+
         cache_root = run_root / ".cache"
         
         cam_dirs = {
