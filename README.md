@@ -76,7 +76,7 @@ This approach is universally compatible with a wide range of RL algorithms.
 git clone https://github.com/FlagOpen/Robo-Dopamine.git
 cd Robo-Dopamine
 
-# build conda env.
+# build conda env., and require `cuda >=12.8`
 conda create -n robo-dopamine python=3.10
 conda activate robo-dopamine
 pip install -r requirements.txt
