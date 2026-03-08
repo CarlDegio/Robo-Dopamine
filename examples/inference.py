@@ -647,8 +647,8 @@ if __name__ == "__main__":
     BASE_DEMO_PATH = "./examples/demo_table"
     OUTPUT_ROOT = "./results"
     ## Note: If no target/goal image is provided, 
-    ## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/demo_table/blank_goal.png".
-    GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/demo_table/blank_goal.png"
+    ## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/blank_goal.png".
+    GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/blank_goal.png"
     PREDICTION_MODE = "forward" # "incremental" or "backward"
 
     # multi-view usage:

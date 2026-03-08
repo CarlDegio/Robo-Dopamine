@@ -25,7 +25,7 @@
 
 
 ## 🗞️ News
-- **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-inference) for details.
+- **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-usage) for details.
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
 - **`2026-02-22`**: 🔥🔥🔥 **Robo-Dopamine** gets accepted to **CVPR 2026**! See you in Denver, Colorado, USA!
 - **`2026-02-10`**: ⚡  We released data generation pipeline and finetune codes. ***Try to finetune with your own data***.
@@ -82,7 +82,7 @@ conda activate robo-dopamine
 pip install -r requirements.txt
 ```
 
-## 💡 Simple Inference
+## 💡 Simple Usage
 
 The following are simple and practical examples of the three inference modes (Incremental-Mode, Forward-Mode, and Backward-Mode). In practice, to predict the task state reward more accurately, ***we highly recommend averaging the inference reward results from all three modes to use as the final reward in RL***.
 
@@ -96,9 +96,9 @@ TASK_INSTRUCTION = "organize the table"
 BASE_DEMO_PATH = "./examples/demo_table"
 OUTPUT_ROOT = "./results"
 
-## Note: If no target/goal image is provided, 
-## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/demo_table/blank_goal.png".
-GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/demo_table/blank_goal.png"
+## Note: If no reference/goal image is provided, 
+## please replace `GOAL_IMAGE_PATH` with the blank image "./examples/blank_goal.png".
+GOAL_IMAGE_PATH = "./examples/demo_table/goal_image.png" # "./examples/blank_goal.png"
 
 # select prediction model: Forward-Mode, Incremental-Mode or Backward-Mode
 PREDICTION_MODE = "forward" # "incremental" or "backward"
@@ -134,6 +134,91 @@ output_dir = model.run_pipeline(
 print(f"Episode ({BASE_DEMO_PATH}) processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
 
 ```
+
+## ✨ More Cases for Testing
+Many thanks to [Robometer](https://github.com/robometer/robometer) for providing more interesting test examples 🤗. To better demonstrate the usage of **'single-view without goal image'** with our latest [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model, we also provide the following reference script for your easy tests.
+
+```python
+import os
+from examples.inference import GRMInference
+
+model = GRMInference("tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview")
+
+## Note: If no target/goal image is provided, 
+## please replace `GOAL_IMAGE_PATH` with the blank image!
+GOAL_IMAGE_PATH = "./examples/blank_goal.png" 
+
+# select prediction mode: Forward-Mode, Incremental-Mode or Backward-Mode
+PREDICTION_MODE =  "forward" # "incremental" or "backward"
+
+OUTPUT_ROOT = "./results"
+
+# 1. open red drawer
+output_dir = model.run_pipeline(
+    cam_high_path  = "./examples/more_demos/open_red_drawer_wrist.mp4",
+    cam_left_path  = "./examples/more_demos/open_red_drawer_wrist.mp4",
+    cam_right_path = "./examples/more_demos/open_red_drawer_wrist.mp4",
+    out_root       = OUTPUT_ROOT,
+    task           = "open red drawer",
+    frame_interval = 5, 
+    batch_size     = 1, 
+    goal_image     = GOAL_IMAGE_PATH,
+    eval_mode      = PREDICTION_MODE,
+    visualize      = True
+)
+print(f"Episode processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
+
+# 2. put marker in cup (fail case)
+output_dir = model.run_pipeline(
+    cam_high_path  = "./examples/more_demos/put_marker_in_cup_fail.mp4",
+    cam_left_path  = "./examples/more_demos/put_marker_in_cup_fail.mp4",
+    cam_right_path = "./examples/more_demos/put_marker_in_cup_fail.mp4",
+    out_root       = OUTPUT_ROOT,
+    task           = "put marker in cup",
+    frame_interval = 5, 
+    batch_size     = 1, 
+    goal_image     = GOAL_IMAGE_PATH,
+    eval_mode      = PREDICTION_MODE,
+    visualize      = True
+)
+print(f"Episode processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
+
+# 3. push green block in green bowl
+output_dir = model.run_pipeline(
+    cam_high_path  = "./examples/more_demos/push_green_block_in_green_bowl.mp4",
+    cam_left_path  = "./examples/more_demos/push_green_block_in_green_bowl.mp4",
+    cam_right_path = "./examples/more_demos/push_green_block_in_green_bowl.mp4",
+    out_root       = OUTPUT_ROOT,
+    task           = "push green block in green bowl",
+    frame_interval = 5, 
+    batch_size     = 1, 
+    goal_image     = GOAL_IMAGE_PATH,
+    eval_mode      = PREDICTION_MODE,
+    visualize      = True
+)
+print(f"Episode processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
+
+# 4. put apple in tray
+output_dir = model.run_pipeline(
+    cam_high_path  = "./examples/more_demos/put_apple_in_tray.mp4",
+    cam_left_path  = "./examples/more_demos/put_apple_in_tray.mp4",
+    cam_right_path = "./examples/more_demos/put_apple_in_tray.mp4",
+    out_root       = OUTPUT_ROOT,
+    task           = "put apple in tray",
+    frame_interval = 5, 
+    batch_size     = 1, 
+    goal_image     = GOAL_IMAGE_PATH,
+    eval_mode      = PREDICTION_MODE,
+    visualize      = True
+)
+print(f"Episode processed with single-view {PREDICTION_MODE}-mode. Output at: {output_dir}")
+
+```
+We have attached the visualization results from these tests below. ***Please feel free to open an issue if you have any questions when testing the provided examples or your own test cases.*** 🤗 🤗 🤗
+
+[Demo Result 1](https://github.com/user-attachments/assets/23474262-e61a-4f86-b2e5-c3b426292536) | [Demo Result 2](https://github.com/user-attachments/assets/85adb149-0589-4237-907a-faedc9034058) | [Demo Result 3](https://github.com/user-attachments/assets/3e1db271-688e-4e2b-9847-076e0d358f70) | [Demo Result 4](https://github.com/user-attachments/assets/46588f92-6004-4aec-91c6-a0775a0890d2)
+
+
 
 ## 🔍 Evaluation
 
