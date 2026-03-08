@@ -25,7 +25,7 @@
 
 
 ## 🗞️ News
-- **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**.
+- **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** and caters to various use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-inference) for details.
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
 - **`2026-02-22`**: 🔥🔥🔥 **Robo-Dopamine** gets accepted to **CVPR 2026**! See you in Denver, Colorado, USA!
 - **`2026-02-10`**: ⚡  We released data generation pipeline and finetune codes. ***Try to finetune with your own data***.
@@ -67,7 +67,7 @@ This approach is universally compatible with a wide range of RL algorithms.
 |--------------------------|----------------------------------------------------------------|-------------------------------------------------------|
 | GRM-3B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B)   | Full-trained GRM from RoboBrain-2.0-3B      | 
 | GRM-8B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B)   | Full-trained GRM from RoboBrain-2.0-8B      |
-| GRM-2.0-8B-Prewiew | [🤗 tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) | *More Powerful and Stable GRM with ST Modeling*     |
+| 🔥 GRM-2.0-8B-Prewiew | [🤗 tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) | *More Powerful and Stable GRM with ST Modeling, supporting single-view/multi-view cases, both with and without reference target images*     |
 
 ## 🛠️ Setup
 
