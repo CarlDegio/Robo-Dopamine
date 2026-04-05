@@ -25,6 +25,7 @@
 
 
 ## 🗞️ News
+- **`2026-04-05`**: 🤗 We released [Robo-Dopamine-GRM-2.0-4B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview) model in HF, which is a ***lightweight*** GRM-2.0 preview version.
 - **`2026-03-23`**: 📊 We employ [Robo-Dopamine-GRM](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) as a ***Judge*** to evaluate existing VLAs on the [RoboChallenge](https://robochallenge.ai/) benchmark across multiple dimensions and metrics. Please refer to the  [📊 **Leaderboard**](https://prm-as-a-judge.github.io/leaderboard.html) and [📑 **Blog**](https://prm-as-a-judge.github.io/blog.html) for details.
 - **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-usage) for details.
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
@@ -42,9 +43,8 @@
 - [x] Release data generation pipeline and finetune codes.
 - [x] Release Robo-Dopamine-GRM-8B model.
 - [x] Release more powerful and stable Robo-Dopamine-GRM-2.0-8B-Preview model.
-- [ ] Release final version of Robo-Dopamine-GRM-2.0-8B model *(About 2 week)*.
-- [ ] Release full GRM dataset and GRM pre-training codes *(About 1 months)*.
-- [ ] Release Dopamine-RL training codes for simulator and real-world settings *(Maybe 1 months or more)*.
+- [x] Release a lightweight Robo-Dopamine-GRM-2.0-4B-Preview model.
+- [ ] Release full GRM dataset and GRM pre-training codes.
 
 
 ## 🤖 Overview
@@ -68,6 +68,7 @@ This approach is universally compatible with a wide range of RL algorithms.
 |--------------------------|----------------------------------------------------------------|-------------------------------------------------------|
 | GRM-3B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-3B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-3B)   | Full-trained GRM from RoboBrain-2.0-3B      | 
 | GRM-8B     | [🤗 tanhuajie2001/Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B)   | Full-trained GRM from RoboBrain-2.0-8B      |
+| 🔥 GRM-2.0-4B-Prewiew | [🤗 tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview) | *A Lightweight GRM with ST Modeling, supporting single-view/multi-view cases, both with and without reference target images*     |
 | 🔥 GRM-2.0-8B-Prewiew | [🤗 tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) | *More Powerful and Stable GRM with ST Modeling, supporting single-view/multi-view cases, both with and without reference target images*     |
 
 ## 🛠️ Setup
@@ -365,10 +366,6 @@ DATASETS=example_grm_finetune                   # modified here
 cd ../train
 bash scripts/finetune_grm.sh
 ```
-
-
-## 🤖 Dopamine-RL Infra
-***Coming soon ...***
 
 
 ## 📑 Citation
