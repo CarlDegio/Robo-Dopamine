@@ -25,7 +25,7 @@
 
 
 ## 🗞️ News
-- **`2026-04-05`**: 🤗 We released [Robo-Dopamine-GRM-2.0-4B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview) model in HF, which is a ***lightweight*** GRM-2.0 preview version.
+- **`2026-04-05`**: 🤗 We released [Robo-Dopamine-GRM-2.0-4B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview) model in HF. This is a ***lightweight*** GRM-2.0 preview version, achieving approximately 80% accuracy of [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview).
 - **`2026-03-23`**: 📊 We employ [Robo-Dopamine-GRM](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) as a ***Judge*** to evaluate existing VLAs on the [RoboChallenge](https://robochallenge.ai/) benchmark across multiple dimensions and metrics. Please refer to the  [📊 **Leaderboard**](https://prm-as-a-judge.github.io/leaderboard.html) and [📑 **Blog**](https://prm-as-a-judge.github.io/blog.html) for details.
 - **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-usage) for details.
 - **`2026-03-02`**: 🤗 We released [Robo-Dopamine-GRM-8B](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-8B) model in HF.
