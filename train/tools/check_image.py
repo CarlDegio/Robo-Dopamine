@@ -164,6 +164,6 @@ def validate_data(json_file_path, media_folder_path):
 
 # Example usage
 if __name__ == "__main__":
-    json_file_path = "/share/project/tanhuajie/agibot_gvl/task_shuffle/train_data_shuffle_w_think_reformat.json"  # Replace with your JSON file path
-    media_folder_path = "/share/project/tanhuajie/"      # Replace with your media folder path
+    json_file_path = "example.json"  # Replace with your JSON file path
+    media_folder_path = "media"      # Replace with your media folder path
     validate_data(json_file_path, media_folder_path)

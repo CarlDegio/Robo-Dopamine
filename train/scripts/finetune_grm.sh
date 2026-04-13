@@ -5,9 +5,9 @@ export WANDB_MODE=disabled
 # ======================
 # Path Configuration
 # ======================
-MODEL_PATH="tanhuajie2001/Robo-Dopamine-GRM-3B" # modified here
-OUTPUT_DIR="./checkpoints/example_grm_finetune" # modified here
-DATASETS=example_grm_finetune                   # modified here
+MODEL_PATH="tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview" # modified here
+OUTPUT_DIR="./checkpoints/example_grm_finetune"             # modified here
+DATASETS=example_grm_finetune                               # modified here
 
 CACHE_DIR="./.cache"
 mkdir -p $OUTPUT_DIR
