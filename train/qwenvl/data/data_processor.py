@@ -90,13 +90,13 @@ def update_processor_pixels(processor, data_args):
         rank0_print(f"Video size (longest_edge):  {vp.size.get('longest_edge', 'N/A')}")
 
         if hasattr(vp, "min_pixels") and hasattr(vp, "max_pixels"):
-            vp.min_pixels = data_args.video_min_pixels
-            vp.max_pixels = data_args.video_max_pixels
+            vp.min_pixels = data_args.video_min_frame_pixels
+            vp.max_pixels = data_args.video_max_frame_pixels
             rank0_print(
-                f"✅ Updated Qwen2-VL video_processor min_pixels to {data_args.video_min_pixels}"
+                f"✅ Updated Qwen2-VL video_processor min_pixels to {data_args.video_min_frame_pixels}"
             )
             rank0_print(
-                f"✅ Updated Qwen2-VL video_processor max_pixels to {data_args.video_max_pixels}"
+                f"✅ Updated Qwen2-VL video_processor max_pixels to {data_args.video_max_frame_pixels}"
             )
 
         if hasattr(vp, "min_frames") and hasattr(vp, "max_frames"):
@@ -114,8 +114,8 @@ def update_processor_pixels(processor, data_args):
             rank0_print(f"✅ Updated video_processor fps to {data_args.video_fps}")
 
         if hasattr(vp, "size") and isinstance(vp.size, dict):
-            vp.size["shortest_edge"] = data_args.video_min_pixels
-            vp.size["longest_edge"] = data_args.video_max_pixels
+            vp.size["shortest_edge"] = data_args.video_min_frame_pixels
+            vp.size["longest_edge"] = data_args.video_max_frame_pixels
             rank0_print(
                 f"✅ Updated Video size (shortest_edge): {vp.size.get('shortest_edge', 'N/A')}"
             )
