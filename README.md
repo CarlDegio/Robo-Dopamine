@@ -362,6 +362,15 @@ DATASETS=example_grm_finetune                               # modified here
 ```
 
 **Launch the training script**
+
+*Before you launch training, make sure that you have installed the packages below:*
+```
+pip install flash-attn --no-build-isolation
+pip install deepspeed
+pip install opencv-python-headless<4.12
+pip install numpy<2.0
+```
+*Then, run the script below:*
 ```bash
 cd ../train
 bash scripts/finetune_grm.sh
