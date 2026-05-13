@@ -11,7 +11,7 @@
   &nbsp;
   <a href="https://huggingface.co/collections/tanhuajie2001/robo-dopamine"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Weights-Huggingface-yellow" alt="Weights"></a>
   &nbsp;
-  <a href="#"><img src="https://img.shields.io/badge/🤗%20Dataset-Stay%20tuned-green.svg" alt="Dataset"></a>
+  <a href="https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-GRM-Dataset"><img src="https://img.shields.io/badge/🤗%20Dataset-Huggingface-green.svg" alt="Dataset"></a>
   &nbsp;
   <a href="https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-Bench"><img src="https://img.shields.io/badge/🔍%20Benchmark-RoboDopamineBench-orange.svg" alt="Benchmark"></a>
   &nbsp;
@@ -25,6 +25,7 @@
 
 
 ## 🗞️ News
+- **`2026-05-13`**: 🤗 We released [Robo-Dopamine-GRM-Dataset](https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-GRM-Dataset), fully 35M training dataset for Robo-Dopamine-GRM series.
 - **`2026-04-05`**: 🤗 We released [Robo-Dopamine-GRM-2.0-4B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-4B-Preview) model in HF. This is a ***lightweight*** GRM-2.0 preview version, achieving approximately 80% accuracy of [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview).
 - **`2026-03-23`**: 📊 We employ [Robo-Dopamine-GRM](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) as a ***Judge*** to evaluate existing VLAs on the [RoboChallenge](https://robochallenge.ai/) benchmark across multiple dimensions and metrics. Please refer to the  [📊 **Leaderboard**](https://prm-as-a-judge.github.io/leaderboard.html) and [📑 **Blog**](https://prm-as-a-judge.github.io/blog.html) for details.
 - **`2026-03-05`**: 🔥🔥🔥 We released [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) model in HF. **Highly recommend trying the more versatile and stable GRM-2.0-preview version**. It currently supports ***single-view/multi-view*** use cases, ***both with and without reference target images***, please refer to [Quick Start](https://github.com/FlagOpen/Robo-Dopamine/tree/main?tab=readme-ov-file#-simple-usage) for details.
@@ -44,7 +45,7 @@
 - [x] Release Robo-Dopamine-GRM-8B model.
 - [x] Release more powerful and stable Robo-Dopamine-GRM-2.0-8B-Preview model.
 - [x] Release a lightweight Robo-Dopamine-GRM-2.0-4B-Preview model.
-- [ ] Release full GRM dataset and GRM pre-training codes.
+- [x] Release full GRM dataset and GRM pre-training codes.
 
 
 ## 🤖 Overview
