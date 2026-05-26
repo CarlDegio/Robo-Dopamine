@@ -115,8 +115,8 @@ openai==2.2.0
 openai-harmony==0.0.4
 opencv-python-headless==4.12.0.88
 openpyxl==3.1.5
-outlines==0.0.46
-outlines_core==0.2.11
+outlines
+outlines_core
 packaging==24.2
 pandas==2.3.3
 partial-json-parser==0.2.1.1.post6
